@@ -19,9 +19,9 @@ const CatalogueNavBar = () => {
       localStorage.removeItem('config');
       localStorage.removeItem('name');
       window.location.reload();
-    } catch ({response: {status, statusText, data}}){
+    } catch ({response: {status, statusText, data: { message }}}){
       Swal.fire({
-        title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+        title: `<span style=";font-size: 18px">${status} ${statusText}\n${message}</span>`,
         width: 320,
         confirmButtonColor: '#5dbb63',
       });

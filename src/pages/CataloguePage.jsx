@@ -11,24 +11,38 @@ const CataloguePage = () => {
   const { config } = useContext(UserContext);
   const { setLikedModels } = useContext(CatalogueContext);
 
-  const [loading, setLoading] = useState(false);
-  const [models, setModels] = useState(null);
+  /* const [catalogue, setCatalogue] = useState(null); */
 
-  if (models === null) return (
+  const [breeds, setBreeds] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchBreedsData = async () => {
+      try {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getBreeds`);
+        setBreeds(data);
+      } catch ({response: {status, statusText, data: { message }}}) {
+        console.log(`${status} ${statusText}\n${message}`);
+      }
+    };
+    fetchBreedsData();
+  }, []);
+
+  if (breeds === null) return (
     <LoadingBody><p>Carregando...</p></LoadingBody>
   )
   return (  
     <CataloguePageBody>
-      {(models.length === 0) 
+      {/* {(catalogue.length === 0) 
         ? 
           <h2>Não há nenhum modelo cadastrado</h2>
         :
           <ul>
-              {models.map((model) => 
+              {catalogue.map((model) => 
                 <ModelCard model={model} key={model.id}/>)
               }
           </ul>
-      }
+      } */}
     </CataloguePageBody>
   );
 };
