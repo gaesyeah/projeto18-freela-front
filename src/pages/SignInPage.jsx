@@ -44,12 +44,12 @@ const signInPage = () => {
       <form onSubmit={signIn}>
         <input type="email" placeholder="email" required
           disabled={loading}
-          onChange={e => setSignInInputs(previous => ({...previous, ['email']:e.target.value}))}
+          onChange={e => setSignInInputs(previous => ({...previous, email:e.target.value}))}
           value={signInInputs.email}
         ></input>
         <input type="password" placeholder="senha" required
           disabled={loading}
-          onChange={e => setSignInInputs(previous => ({...previous, ['password']:e.target.value}))}
+          onChange={e => setSignInInputs(previous => ({...previous, password:e.target.value}))}
           value={signInInputs.password}
         ></input>
         <button disabled={loading}
