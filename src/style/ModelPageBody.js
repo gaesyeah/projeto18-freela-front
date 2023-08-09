@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const ProductPageBody = styled.div`
+export const ModelPageBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,8 +74,8 @@ export const ProductPageBody = styled.div`
         }
       }
       button{
-        cursor: ${({ stock }) => stock < 1 ? 'default' : 'pointer'};
-        background-color: ${({ cart, stock }) => cart ? '#FF5C5C' : (stock < 1 ? 'lightgray' : '#5dbb63')};
+        cursor: ${({ avaliable }) => !avaliable ? 'default' : 'pointer'};
+        background-color: ${({ liked, avaliable }) => liked ? '#FF5C5C' : (!avaliable ? 'lightgray' : '#5dbb63')};
         width: 100%;
         height: 53px;
         font-size: 18px;

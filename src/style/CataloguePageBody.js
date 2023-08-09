@@ -1,10 +1,8 @@
-import { BsSearch } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
 import { FaArrowCircleLeft } from 'react-icons/fa';
-import { PiShoppingCartFill } from 'react-icons/pi';
-import { TbZoomReset } from "react-icons/tb";
 import { styled } from "styled-components";
 
-export const ProductsPageBody = styled.div`
+export const CataloguePageBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,37 +77,7 @@ export const ProductsPageBody = styled.div`
     flex-wrap: wrap;
   }
 `
-export const NavigateButtons = styled.div`
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  display: flex;
-  gap: 10px;
-  z-index: 2;
-  div{
-    span{
-      font-size: 18px;
-    }
-    p{
-      font-size: 24px;
-      text-align: center;
-    }
-    cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
-    opacity: ${({ loading }) => loading ? '0.7' : '1.0'};
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    background-color: lightgrey;
-    color: black;
-    transition-duration: 400ms;
-    &:hover{
-      background-color: ${({ loading }) => loading ? 'lightgrey' : '#5dbb63'};
-      color: ${({ loading }) => loading ? 'black' : 'white'};
-    }
-  }
-`
-export const StyledProductCard = styled.li`
+export const StyledModelCard = styled.li`
   &:hover{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
@@ -163,8 +131,8 @@ export const StyledProductCard = styled.li`
       }
     }
     button{
-      cursor: ${({ stock }) => stock < 1 ? 'default' : 'pointer'};
-      background-color: ${({ cart, stock }) => cart ? '#FF5C5C' : (stock < 1 ? 'lightgray' : '#5dbb63')};
+      cursor: ${({ avaliable }) => !avaliable ? 'default' : 'pointer'};
+      background-color: ${({ liked, avaliable }) => liked ? '#FF5C5C' : (!avaliable ? 'lightgray' : '#5dbb63')};
       height: 53px;
       font-size: 18px;
       font-weight: 500;
@@ -198,7 +166,7 @@ export const LoadingBody = styled.div`
   }
 `;
 
-export const ProductsPageNavBar = styled.div`
+export const CataloguePageNavBar = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   z-index: 2;
   height: 60px;
@@ -248,7 +216,7 @@ export const ProductsPageNavBar = styled.div`
     }
   }
 `
-export const StyledCart = styled(PiShoppingCartFill)`
+export const StyledHeart = styled(AiFillHeart)`
   font-size: 40px;
   display: flex;
   position: fixed;
@@ -262,26 +230,18 @@ export const StyledCart = styled(PiShoppingCartFill)`
   }
 `
 
-export const AddRmCart = styled(PiShoppingCartFill)`
+export const AddRmLike = styled(AiFillHeart)`
   cursor: pointer;
-  font-size: 40px;
+  font-size: 36px;
   color: white;
 `
 
 export const StyledArrow = styled(FaArrowCircleLeft)`
-  font-size: 26px;
+  font-size: 24px;
   cursor: pointer;
   color: black;
   transition-duration: 400ms;
   &:hover{
     color: white;
   }
-`
-
-export const StyledSearch = styled(BsSearch)`
-  font-size: 32px;
-`
-
-export const StyledResetSearch = styled(TbZoomReset)`
-  font-size: 32px;
 `

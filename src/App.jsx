@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ProductsNavBar from "./components/ProducsNavBar";
-import { ProductsContext } from "./contexts/productsContext";
+import CatalogueNavBar from "./components/CatalogueNavBar";
+import { CatalogueContext } from "./contexts/catalogueContext";
 import { UserContext } from "./contexts/userContext";
-import CartPage from "./pages/CartPage";
-import CheckoutPage from "./pages/CheckoutPage";
-import ProductPage from "./pages/ProductPage";
-import ProductsPage from "./pages/ProductsPage";
+import CataloguePage from "./pages/CataloguePage";
+import LikedPage from "./pages/LikedPage";
+import ModelPage from "./pages/ModelPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 
@@ -14,7 +13,7 @@ function App() {
 
   const { pathname } = useLocation();
 
-  const [cartProducts, setCartProducts] = useState([]);
+  const [likedModels, setLikedModels] = useState([]);
 
   const [loginData, setLoginData] = useState({});
   const { token, name } = loginData;
@@ -42,19 +41,18 @@ function App() {
       config: !storedConfig.current ? config : storedConfig.current,
       name: !storedName.current ? name : storedName.current
     }}>
-    <ProductsContext.Provider value={{cartProducts, setCartProducts}}>
-      {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/carrinho' && pathname !== '/checkout') 
-        && <ProductsNavBar />
+    <CatalogueContext.Provider value={{likedModels, setLikedModels}}>
+      {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/favoritos') 
+        && <CatalogueNavBar />
       }
       <Routes>
-        <Route path="/" element={ <ProductsPage/> }/>
-        <Route path="/produto/:id" element={ <ProductPage/> }/>
+        <Route path="/" element={ <CataloguePage/> }/>
+        <Route path="/modelo/:id" element={ <ModelPage/> }/>
         <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
-        <Route path="/carrinho" element={ <CartPage/> }/>
-        <Route path="/checkout" element={ <CheckoutPage/> }/>
+        <Route path="/favoritos" element={ <LikedPage/> }/>
       </Routes>
-    </ProductsContext.Provider>
+    </CatalogueContext.Provider>
     </UserContext.Provider>
   );
 }

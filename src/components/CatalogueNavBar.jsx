@@ -2,16 +2,16 @@ import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { ProductsContext } from "../contexts/productsContext";
+import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
-import { ProductsPageNavBar, StyledArrow, StyledCart } from "../style/ProductsPageBody";
+import { CataloguePageNavBar, StyledArrow, StyledHeart } from "../style/CataloguePageBody";
 
-const ProductsNavBar = () => {
+const CatalogueNavBar = () => {
 
   const navigate = useNavigate();
 
   const { name, config } = useContext(UserContext);
-  const { cartProducts } = useContext(ProductsContext);
+  const { likedModels } = useContext(CatalogueContext);
 
   const confirmSignOut = async () => {
     try {
@@ -45,7 +45,7 @@ const ProductsNavBar = () => {
   };
 
   return (
-    <ProductsPageNavBar>
+    <CataloguePageNavBar>
     <div>
       {!name 
         ?
@@ -60,10 +60,10 @@ const ProductsNavBar = () => {
         </>
       }
     </div>
-    <h1>{cartProducts.length}</h1>
-    <StyledCart onClick={() => navigate('/carrinho')}/>
-  </ProductsPageNavBar>
+    <h1>{likedModels.length}</h1>
+    <StyledHeart onClick={() => navigate('/favoritos')}/>
+  </CataloguePageNavBar>
   );
 };
 
-export default ProductsNavBar;
+export default CatalogueNavBar;
