@@ -9,14 +9,18 @@ const BreedCard = ({ id, name, imageUrl }) => {
   const [catalogue, setCatalogue] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const { config } = useContext(UserContext); 
+  const { config: { headers: { Authorization } } } = useContext(UserContext);
+  let tokenString = '';
+  if (Authorization !== 'Bearer undefined') {
+    tokenString = `?token=${Authorization.replace('Bearer ', '')}`;
+  }
 
   const getCatalogue = async () => {
     if (catalogue !== null) return setCatalogue(null);
     if (loading) return;
     setLoading(true);
     try {      
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/all/${id}?${config.headers.Authorization.replace('Bearer ', '')}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/all/${id}${tokenString}`);
       setCatalogue(data);
       setLoading(false);
     } catch ({response: {status, statusText, data: { message }}}){

@@ -49,7 +49,8 @@ const ModelPage = () => {
             <h2>{userData.cellphone}</h2>
           </div>
           <p>{description}</p>
-          <p><span>categoria: {breedName}</span></p>
+          <p>categoria: {breedName}</p>
+          <p><span>{userData.name}</span></p>
           <button 
             disabled={loading}
           >{loading ? <h3>Carregando...</h3> : (isLiked) ? <h3>Remover dos favoritos</h3> : <h3>Adicionar aos Favoritos</h3>}
