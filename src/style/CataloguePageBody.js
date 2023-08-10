@@ -287,12 +287,17 @@ export const StyledAccountButtons = styled.div`
   justify-content: space-around;
   div:nth-child(1){
     border-radius: 10px 0 0 10px;
+    cursor: ${({ breeds }) => breeds !== null ? 'pointer' : 'default'};
   }
   div:nth-child(2){
     border-radius: 0 10px 10px 0;
+    cursor: ${({ myModels }) => myModels !== null ? 'pointer' : 'default'};
   }
   div{
-    cursor: pointer;
+    img{
+      width: 26px;
+    }
+    overflow: hidden;
     background: #5dbb63;
     display: flex;
     align-items: center;

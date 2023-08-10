@@ -163,7 +163,7 @@ export const StyledEditMenu = styled.ul`
   }
 `;
 
-export const StyledMyModelsCard = styled.li`
+export const StyledMyModelsCard = styled.ul`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-left: 6px;
   margin-top: 20px;

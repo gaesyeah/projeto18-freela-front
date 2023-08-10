@@ -42,6 +42,7 @@ function App() {
 
   const [accountMenu, setAccountMenu] = useState(null);
 
+  const [myModels, setMyModels] = useState(null);
   const [breeds, setBreeds] = useState(null);
   useEffect(() => {
     const fetchBreedsData = async () => {
@@ -63,11 +64,11 @@ function App() {
     }}>
     <CatalogueContext.Provider value={{likedModels, setLikedModels, breeds}}>
       {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/favoritos') 
-        && <> <CatalogueNavBar /> {pathname.slice(0, 8) !== '/modelo/' && <AccountButtons accountMenu={{ accountMenu, setAccountMenu }} />} </>
+        && <> <CatalogueNavBar /> {pathname.slice(0, 8) !== '/modelo/' && <AccountButtons accountMenu={{ accountMenu, setAccountMenu, breeds, myModels }} />} </>
       }
       {accountMenu && <AccountMenu setAccountMenu={setAccountMenu}/>}
       <CreateModelMenu accountMenu={accountMenu}/>
-      <EditModelMenu accountMenu={accountMenu}/>
+      <EditModelMenu accountMenu={{ myModels, setMyModels, accountMenu }}/>
       <Routes>
         <Route path="/" element={ <CataloguePage /> }/>
         <Route path="/modelo/:id" element={ <ModelPage/> }/>

@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../../contexts/userContext";
 import { StyledEditMenu } from "../../../style/MenuPageBody";
 import { MyModelsCard } from "./MyModels";
 
-const EditModelMenu = ({ accountMenu }) => {
+const EditModelMenu = ({ accountMenu: { myModels, setMyModels, accountMenu }}) => {
 
   const { config } = useContext(UserContext);
 
-  const [myModels, setMyModels] = useState(null);
   useEffect(() => {
     const fetchMyModelsData = async () => {
       try {
