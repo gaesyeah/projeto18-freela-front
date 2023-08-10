@@ -31,7 +31,8 @@ const EditModelMenu = ({ accountMenu: { myModels, setMyModels, accountMenu }}) =
   return (
     <StyledEditMenu accountMenu={accountMenu}>
       <div>
-        {myModels.map(breed => <MyModelsCard breed={breed} key={breed.id}></MyModelsCard>)}
+        <h1>{'Aqui estão os seus modelos, algum está precisando de férias?'}</h1>
+        {myModels.map(breed => <MyModelsCard setMyModels={setMyModels} breed={breed} key={breed.id}></MyModelsCard>)}
       </div>
     </StyledEditMenu>
   );

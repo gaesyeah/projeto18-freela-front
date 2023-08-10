@@ -155,9 +155,12 @@ export const StyledEditMenu = styled.ul`
     transform: translate(3.3%,0%);
   }
   h1{
+    margin-top: 4px;
+    margin-bottom: -6px;
+    transform: translate(-3.3%,0%);
     text-align: center;
     overflow: hidden;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: gray;
   }
@@ -188,17 +191,57 @@ export const StyledMyModelsCard = styled.ul`
 `;
 
 export const StyledMyModelCard = styled.li`
+  cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
+  @keyframes blink {
+    25%, 75%, 100% {
+      color: red;
+    }
+    0%, 50% {
+      color: green;
+    }
+  }
+  position: relative;
+  border-radius: 8px;
   width: 100%;
   height: 34px;
   background: #5dbb63;
   display: flex;
   align-items: center;
-  padding-left: 4px;
-  h2{
-    overflow-y: hidden;
-    overflow-x: scroll;
-    font-size: 18px;
-    font-weight: 500;
-    color: white;
+  overflow-y: hidden;
+  div:nth-child(1){
+    position: unset;
+    margin-left: -4px;
+    h2{
+      overflow-y: hidden;
+      overflow-x: scroll;
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      max-width: 84%;
+    }
+    h3{
+      overflow-y: hidden;
+      color: black;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 2px;
+      animation: blink 3s infinite;
+    }
   }
+  div:last-child{
+    overflow-y: hidden;
+    position: absolute;
+    right: 0;
+    height: 34px;
+    width: 34px;
+    img{
+      overflow-y: hidden;
+      right: 0;
+      border-radius: 0 8px 8px 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
 `;
