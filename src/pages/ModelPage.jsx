@@ -4,7 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
 import { AddRmLike, LoadingBody } from "../style/CataloguePageBody";
-import { ModelPageBody } from "../style/ModelPageBody";
+import { ModelPageBody, WhatsAppDiv } from "../style/ModelPageBody";
+import zapIcon from "./../assets/zapIcon.png";
 
 const ModelPage = () => {
 
@@ -36,6 +37,17 @@ const ModelPage = () => {
   const { title, description, avaliable, breedName, imageUrl, userData } = model;
   const isLiked = likedModels.some(model => model.id === id);
 
+  const openZap = () => {
+    window.open(`https://wa.me/${userData.cellphone}?text=` + encodeURIComponent(`
+    *Olá, eu gostaria de contratar o seu modelo:*
+  *-* Nome: ${title}
+  *-* categoria : ${breedName}
+  *-* Disponivel: ${avaliable ? 'sim' : 'não'}
+
+  *Meu nome:* ${name}
+    `));
+  }
+
   return (
     <ModelPageBody liked={isLiked} avaliable={avaliable}>
       <div>
@@ -46,11 +58,9 @@ const ModelPage = () => {
         <div>
           <div>
             <h1>{title}</h1>
-            <h2>{userData.cellphone}</h2>
           </div>
           <p>{description}</p>
-          <p>categoria: {breedName}</p>
-          <p><span>{userData.name}</span></p>
+          <p><span>categoria: {breedName}</span></p>
           <button 
             disabled={loading}
           >{loading ? <h3>Carregando...</h3> : (isLiked) ? <h3>Remover dos favoritos</h3> : <h3>Adicionar aos Favoritos</h3>}
@@ -58,6 +68,11 @@ const ModelPage = () => {
           </button>
         </div>
       </div>
+      <WhatsAppDiv onClick={openZap}>
+        <img src={userData.imageUrl}/>
+        <p>{userData.cellphone}</p>
+        <img src={zapIcon} />
+      </WhatsAppDiv>
       <p onClick={() => navigate('/')}>Voltar</p>
     </ModelPageBody>
   );

@@ -63,10 +63,6 @@ export const ModelPageBody = styled.div`
           margin-bottom: 3px;
           margin-top: 3px;
         }
-        h2{
-          color: #5dbb63;
-          margin-right: 4px;
-        }
       }
       p{
         margin-left: 2px;
@@ -116,4 +112,32 @@ export const ModelPageBody = styled.div`
       color: #5dbb63;
     }
   }
-`
+`;
+
+export const WhatsAppDiv = styled.div`
+  margin-top: 14px;
+  background-color: #5dbb63;
+  width: 340px;
+  border-radius: 10px;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.9;
+    }
+  p{
+    color: #228C22;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  img{
+    margin: 2px;
+    border-radius: 16%;
+    width: 52px;
+  }
+  img:last-child{
+    margin-top: 6px;
+  }
+`;
