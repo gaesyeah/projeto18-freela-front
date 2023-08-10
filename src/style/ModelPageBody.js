@@ -35,6 +35,8 @@ export const ModelPageBody = styled.div`
         font-size: 50px;
         color: red;
         align-self: center;
+        margin-bottom: 20px;
+        margin-left: 10px;
       }
       img{
         border-radius: 6px 6px 0 0;
@@ -58,6 +60,8 @@ export const ModelPageBody = styled.div`
         font-weight: 700;
         font-size: 18px;
         h1{
+          margin-bottom: 3px;
+          margin-top: 3px;
         }
         h2{
           color: #5dbb63;
@@ -74,6 +78,9 @@ export const ModelPageBody = styled.div`
         }
       }
       button{
+        h3{
+          margin-right: 12px;
+        }
         cursor: ${({ avaliable }) => !avaliable ? 'default' : 'pointer'};
         background-color: ${({ liked, avaliable }) => liked ? '#FF5C5C' : (!avaliable ? 'lightgray' : '#5dbb63')};
         width: 100%;
@@ -88,7 +95,7 @@ export const ModelPageBody = styled.div`
         border-radius: 0 0 6px 6px;
         transition-duration: 400ms;
         &:hover{
-          opacity: 0.9;
+          opacity: ${({ avaliable }) => !avaliable ? 1.0 : 0.9};
           }
         }
         &:disabled{

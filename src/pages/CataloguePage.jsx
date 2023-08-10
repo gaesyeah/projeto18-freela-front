@@ -19,9 +19,8 @@ const CataloguePage = () => {
     fetchBreedsData();
   }, []);
 
-  if (breeds === null) return (
-    <LoadingBody><p>Carregando...</p></LoadingBody>
-  )
+  if (breeds === null) return <LoadingBody><p>Carregando...</p></LoadingBody>;
+  
   return (  
     <BreedsBody>
       {(breeds.length === 0) 

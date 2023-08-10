@@ -11,14 +11,13 @@ const ModelCard = ({ model }) => {
 
   const { config, name } = useContext(UserContext);
   const { likedModels, setLikedModels } = useContext(CatalogueContext);
+  const isLiked = likedModels.some(model => model.id === id);
 
   const [loading, setLoading] = useState(false);
 
-  const isLiked = likedModels.some(model => model.id === id);
-
   return(
     <StyledModelCard liked={isLiked} avaliable={avaliable}>
-      <div>
+      <div onClick={() => navigate(`/modelo/${id}`)}>
         <h2>{!avaliable && 'Estou de Férias'}</h2>
         <img src={imageUrl}></img>
       </div>

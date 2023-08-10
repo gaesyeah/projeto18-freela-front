@@ -237,7 +237,7 @@ export const StyledHeart = styled(AiFillHeart)`
 `
 
 export const AddRmLike = styled(AiFillHeart)`
-  font-size: 36px;
+  font-size: 38px;
   color: white;
 `
 
