@@ -4,7 +4,7 @@ export const StyledBackGround = styled.div`
   cursor: pointer;
   min-width: 100vw;
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 4;
   background-color: rgba(0,0,0,0.4);
 `;
@@ -15,7 +15,7 @@ export const StyledCreateMenu = styled.form`
   transition: 400ms ease-out;
   top: 50%; right: ${({ accountMenu }) => accountMenu === 'cadastrar' ? '50%' : '150%'};
   transform: translate(50%,-50%);
-  position: absolute;
+  position: fixed;
   border-radius: 10px;
   width: 90%;
   padding-top: 14px;
@@ -138,7 +138,7 @@ export const StyledEditMenu = styled.ul`
   transition: 400ms ease-out;
   top: 50%; right: ${({ accountMenu }) => accountMenu === 'editar' ? '50%' : '-50%'};
   transform: translate(50%,-50%);
-  position: absolute;
+  position: fixed;
   border-radius: 10px;
   width: 90%;
   max-height: 350px;
@@ -192,6 +192,10 @@ export const StyledMyModelsCard = styled.ul`
 
 export const StyledMyModelCard = styled.li`
   cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
+  &:hover{
+    opacity: 0.8;
+    transition-duration: 400ms;
+  }
   @keyframes blink {
     25%, 75%, 100% {
       color: red;
