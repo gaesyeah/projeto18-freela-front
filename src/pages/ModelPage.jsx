@@ -39,12 +39,12 @@ const ModelPage = () => {
 
   const openZap = () => {
     window.open(`https://wa.me/${userData.cellphone}?text=` + encodeURIComponent(`
-    *Olá, eu gostaria de contratar o seu modelo:*
+    *Olá ${userData.name}, eu gostaria de contratar o seu modelo:*
   *-* Nome: ${title}
   *-* categoria : ${breedName}
   *-* Disponivel: ${avaliable ? 'sim' : 'não'}
 
-  *Meu nome:* ${name}
+  *Meu nome:* ${name ? name : 'anônimo'}
     `));
   }
 
