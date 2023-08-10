@@ -4,6 +4,7 @@ export const SignBody = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   background-color: #EDEDED;
   div{
+    overflow: hidden;
     cursor: pointer;
     text-align: center;
     margin-top: 20px;
@@ -78,6 +79,7 @@ export const SignBody = styled.div`
 `
 
 export const Logo = styled.h1`
+  overflow: hidden;
   word-break: normal;
   text-align: center;
   margin-bottom: 24px;

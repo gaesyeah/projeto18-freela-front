@@ -6,9 +6,12 @@ import { styled } from "styled-components";
 
 export const BreedsBody = styled.div`
   h2{
+    height: 20px;
+    overflow: hidden;
     margin-top: 78px;
     font-weight: 700;
     font-size: 17px;
+    margin-bottom: -2px;
   }
   display: flex;
   flex-direction: column;
@@ -33,6 +36,7 @@ export const StyledBreedCard = styled.li`
   width: 90%;
   font-family: 'Lexend Deca', sans-serif;
   h1{
+    overflow: hidden;
     text-align: center;
     color: black;
     font-weight: 500;
@@ -49,6 +53,8 @@ export const StyledBreedCard = styled.li`
       transition-duration: 400ms;
     }
     p{
+      overflow: hidden;
+      height: 30px;
       padding-left: 10px;
       color: black;
       font-size: 24px;
@@ -97,6 +103,7 @@ export const StyledModelCard = styled.li`
     cursor: pointer;
     h2{
       width: 220px;
+      overflow: hidden;
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: white;
       transform: rotate(-45deg);
@@ -115,8 +122,7 @@ export const StyledModelCard = styled.li`
     width: 158px;
     img{
       position: relative;
-      border-top-right-radius: 6px;
-      border-top-left-radius: 6px;
+;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -128,6 +134,7 @@ export const StyledModelCard = styled.li`
     background-color: lightgray;
     border-radius: 0px;
     p{
+      height: unset;
       max-width: 168px;
       overflow: scroll hidden;
       white-space: nowrap;
@@ -169,6 +176,8 @@ export const LoadingBody = styled.div`
   width: 100vw;
   height: 100vh;
   p{
+    overflow: hidden;
+    height: 30px;
     color: lightgray;
     font-size: 24px;
     font-weight: 700;
@@ -187,6 +196,7 @@ export const CataloguePageNavBar = styled.div`
   background-color: #5dbb63;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   h1{
+    overflow: hidden;
     text-align: center;
     border-radius: 100%;
     font-weight: 500;
@@ -206,6 +216,7 @@ export const CataloguePageNavBar = styled.div`
     align-items: center;
     gap: 5px;
     p{
+      overflow: hidden;
       cursor: pointer;
       margin-left: 3px;
       font-weight: 600;

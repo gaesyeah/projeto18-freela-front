@@ -1,23 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import BreedCard from "../components/Breed";
+import { CatalogueContext } from "../contexts/catalogueContext";
 import { BreedsBody, LoadingBody } from "../style/CataloguePageBody";
 
 const CataloguePage = () => {
 
-  const [breeds, setBreeds] = useState(null);
-
-  useEffect(() => {
-    const fetchBreedsData = async () => {
-      try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getBreeds`);
-        setBreeds(data);
-      } catch ({response: {status, statusText, data: { message }}}) {
-        console.log(`${status} ${statusText}\n${message}`);
-      }
-    };
-    fetchBreedsData();
-  }, []);
+  const { breeds } = useContext(CatalogueContext);
 
   if (breeds === null) return <LoadingBody><p>Carregando...</p></LoadingBody>;
   

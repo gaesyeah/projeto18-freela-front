@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import AccountButtons from "./components/AccountMenu/AccountButtons";
@@ -46,15 +47,28 @@ function App() {
     document.body.style.overflow = 'hidden'
   };
 
+  const [breeds, setBreeds] = useState(null);
+  useEffect(() => {
+    const fetchBreedsData = async () => {
+      try {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getBreeds`);
+        setBreeds(data);
+      } catch ({response: {status, statusText, data: { message }}}) {
+        console.log(`${status} ${statusText}\n${message}`);
+      }
+    };
+    fetchBreedsData();
+  }, []);
+
   return (
     <UserContext.Provider value={{ 
       setLoginData,
       config: !storedConfig.current ? config : storedConfig.current,
       name: !storedName.current ? name : storedName.current
     }}>
-    <CatalogueContext.Provider value={{likedModels, setLikedModels}}>
+    <CatalogueContext.Provider value={{likedModels, setLikedModels, breeds}}>
       {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/favoritos') 
-        && <> <CatalogueNavBar /> <AccountButtons accountMenu={{ accountMenu, setAccountMenu }} /> </>
+        && <> <CatalogueNavBar /> {pathname.slice(0, 8) !== '/modelo/' && <AccountButtons accountMenu={{ accountMenu, setAccountMenu }} />} </>
       }
       {accountMenu && <AccountMenu setAccountMenu={setAccountMenu}/>}
       <CreateModelMenu accountMenu={accountMenu}/>

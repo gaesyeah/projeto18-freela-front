@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { changeInputs } from "../functions/changeInputs";
 import { Logo, SignBody } from "../style/SignBody";
 
 const SignUpPage = () => {
@@ -42,47 +43,43 @@ const SignUpPage = () => {
     }
   };
 
-  const changeSignUpInputs = (value, type) => {
-    setSignUpInputs(previous => ({...previous, [type]:value}))
-  };
-
   return (  
     <SignBody>
       <Logo>MiauAuAu</Logo>
       <form onSubmit={signUp}>
         <input type="text" placeholder="nome" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'name')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'name')}
           value={signUpInputs.name}
         ></input>
         <input type="email" placeholder="email" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'email')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'email')}
           value={signUpInputs.email}
         ></input>
         <input type="tel" placeholder="whatsapp" pattern="[0-9]{11}" title="Por favor, insira o DDD e o 9 além do numero, por exemplo: 73988456782" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'cellphone')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'cellphone')}
           value={signUpInputs.cellphone}
         ></input>
         <input type="text" placeholder="cpf" pattern="[0-9]{11}" title="Por favor, insira um cpf com 11 digitos" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'cpf')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'cpf')}
           value={signUpInputs.cpf}
         ></input>
         <input type="url" placeholder="url para imagem de perfil" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'imageUrl')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'imageUrl')}
           value={signUpInputs.imageUrl}
         ></input>
         <input type="password" placeholder="senha" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'password')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'password')}
           value={signUpInputs.password}
         ></input>
         <input type="password" placeholder="confirmar senha" required
           disabled={loading}
-          onChange={e => changeSignUpInputs(e.target.value, 'confirmPassword')}
+          onChange={e => changeInputs(setSignUpInputs, e.target.value, 'confirmPassword')}
           value={signUpInputs.confirmPassword}
         ></input>
         <button disabled={loading}

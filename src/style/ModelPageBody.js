@@ -26,6 +26,7 @@ export const ModelPageBody = styled.div`
       height: 340px;
       border: none;
       h3{
+        overflow: hidden;
         position: absolute;
         width: 400px;
         -webkit-text-stroke-width: 1px;
@@ -60,11 +61,13 @@ export const ModelPageBody = styled.div`
         font-weight: 700;
         font-size: 18px;
         h1{
+          overflow: hidden;
           margin-bottom: 3px;
           margin-top: 3px;
         }
       }
       p{
+        overflow: hidden;
         margin-left: 2px;
         font-weight: 500;
         margin-bottom: 3px;
@@ -101,6 +104,7 @@ export const ModelPageBody = styled.div`
       }
     }
   p:last-child{
+    overflow: hidden;
     cursor: pointer;
     text-align: center;
     margin-top: 20px;
@@ -116,6 +120,7 @@ export const ModelPageBody = styled.div`
 
 export const WhatsAppDiv = styled.div`
   margin-top: 14px;
+  overflow: hidden;
   background-color: #5dbb63;
   width: 340px;
   border-radius: 10px;
@@ -128,6 +133,7 @@ export const WhatsAppDiv = styled.div`
     opacity: 0.9;
     }
   p{
+    overflow: hidden;
     color: #228C22;
     font-size: 22px;
     font-weight: 500;

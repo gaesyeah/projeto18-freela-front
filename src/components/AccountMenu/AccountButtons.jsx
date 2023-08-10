@@ -20,7 +20,7 @@ const AccountButtons = ({ accountMenu: { accountMenu, setAccountMenu } }) => {
 
   return (
     <StyledAccountButtons accountMenu={accountMenu}>
-      <div onClick={() => accountFeatures('criar')}><StyledPlusIcon /></div>
+      <div onClick={() => accountFeatures('cadastrar')}><StyledPlusIcon /></div>
       <div onClick={() => accountFeatures('editar')}><StyledEditIcon /></div>
     </StyledAccountButtons>
   )
