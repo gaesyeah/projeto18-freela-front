@@ -30,6 +30,10 @@ export const StyledCreateMenu = styled.form`
   row-gap: 8px;
   label{
     overflow: hidden;
+    color: black;
+    font-size: 17px;
+    font-weight: 700;
+    height: 20px;
   }
   select{
     cursor: pointer;
@@ -95,7 +99,7 @@ export const StyledCreateMenu = styled.form`
     position: absolute;
     border-radius: 0 5px 5px 0;
     right: 16px;
-    margin-top: 180px;
+    margin-top: 184px;
       &:disabled{
       cursor: default;
       opacity: 0.5;
@@ -130,15 +134,71 @@ export const StyledCreateMenu = styled.form`
   }
 `;
 
-export const StyledEditMenu = styled.form`
+export const StyledEditMenu = styled.ul`
   transition: 400ms ease-out;
   top: 50%; right: ${({ accountMenu }) => accountMenu === 'editar' ? '50%' : '-50%'};
   transform: translate(50%,-50%);
   position: absolute;
   border-radius: 10px;
   width: 90%;
-  height: 500px;
+  max-height: 350px;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 4px 0 14px 0;
   z-index: 5;
   background-color: #EDEDED;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  justify-content: center;
+  div{
+    width: 100%;
+    transform: translate(3.3%,0%);
+  }
+  h1{
+    text-align: center;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 600;
+    color: gray;
+  }
+`;
+
+export const StyledMyModelsCard = styled.li`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-left: 6px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-radius: 8px;
+  background-color: lightgray;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  p{
+    margin-top: 4px;
+    overflow: hidden;
+    font-size: 22px;
+    height: 24px;
+    font-weight: 600;
+    color: black;
+  }
+`;
+
+export const StyledMyModelCard = styled.li`
+  width: 100%;
+  height: 34px;
+  background: #5dbb63;
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  h2{
+    overflow-y: hidden;
+    overflow-x: scroll;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+  }
 `;

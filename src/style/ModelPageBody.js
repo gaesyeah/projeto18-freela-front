@@ -81,7 +81,7 @@ export const ModelPageBody = styled.div`
         padding-bottom: 3px;
         overflow-wrap: break-word;
         span{
-          color: #EDEDED;
+          color: white;
         }
       }
       button{

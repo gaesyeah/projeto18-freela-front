@@ -12,7 +12,7 @@ const CreateModelMenu = ({ accountMenu }) => {
 
   const { config } = useContext(UserContext);
   const { breeds } = useContext(CatalogueContext);
-  if (!breeds) return;
+  if (breeds === null) return;
 
   const [loading, setLoading] = useState(false);
   const [modelInputs, setModelInputs] = useState({
@@ -55,7 +55,6 @@ const CreateModelMenu = ({ accountMenu }) => {
   
   const [photosInput, setPhotosInput] = useState('');
   const changePhotosArray = () => {
-
     const { error } = Joi.string().uri().validate(photosInput);
     if (error) {
       return Swal.fire({
@@ -64,7 +63,6 @@ const CreateModelMenu = ({ accountMenu }) => {
         confirmButtonColor: '#5dbb63',
       });
     }
-
     setLoading(true);
     setModelInputs(previous => {
       return { ...previous, photos: [...previous.photos, { url: photosInput }]};

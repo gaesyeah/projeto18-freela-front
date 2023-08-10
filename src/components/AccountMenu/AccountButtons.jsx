@@ -16,6 +16,7 @@ const AccountButtons = ({ accountMenu: { accountMenu, setAccountMenu } }) => {
       });
     }
     setAccountMenu(type);
+    document.body.scrollIntoView();
   }
 
   return (

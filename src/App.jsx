@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import AccountButtons from "./components/AccountMenu/AccountButtons";
 import CreateModelMenu from "./components/AccountMenu/CreateModelMenu";
-import EditModelMenu from "./components/AccountMenu/EditModelMenu";
+import EditModelMenu from "./components/AccountMenu/EditModelMenu/EditModelMenu";
 import AccountMenu from "./components/AccountMenu/MenuBackGround";
 import CatalogueNavBar from "./components/CatalogueNavBar";
 import { CatalogueContext } from "./contexts/catalogueContext";
@@ -41,11 +41,6 @@ function App() {
   const storedName = useRef(localStorage.getItem('name'));
 
   const [accountMenu, setAccountMenu] = useState(null);
-  if (!accountMenu){
-    document.body.style.overflow = 'auto';
-  } else {
-    document.body.style.overflow = 'hidden'
-  };
 
   const [breeds, setBreeds] = useState(null);
   useEffect(() => {
@@ -74,7 +69,7 @@ function App() {
       <CreateModelMenu accountMenu={accountMenu}/>
       <EditModelMenu accountMenu={accountMenu}/>
       <Routes>
-        <Route path="/" element={ <CataloguePage/> }/>
+        <Route path="/" element={ <CataloguePage /> }/>
         <Route path="/modelo/:id" element={ <ModelPage/> }/>
         <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
