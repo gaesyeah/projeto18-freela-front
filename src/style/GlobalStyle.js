@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Lexend Deca', sans-serif;
   }
   *{
+      overflow-x: hidden;
       font-family: 'Lexend Deca', sans-serif;
       box-sizing: border-box;
       user-select: none;

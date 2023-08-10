@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import AccountButtons from "./components/AccountMenu/AccountButtons";
+import CreateModelMenu from "./components/AccountMenu/CreateModelMenu";
+import EditModelMenu from "./components/AccountMenu/EditModelMenu";
+import AccountMenu from "./components/AccountMenu/MenuBackGround";
 import CatalogueNavBar from "./components/CatalogueNavBar";
 import { CatalogueContext } from "./contexts/catalogueContext";
 import { UserContext } from "./contexts/userContext";
@@ -35,6 +39,13 @@ function App() {
   const storedConfig = useRef(JSON.parse(localStorage.getItem('config')));
   const storedName = useRef(localStorage.getItem('name'));
 
+  const [accountMenu, setAccountMenu] = useState(null);
+  if (!accountMenu){
+    document.body.style.overflow = 'auto';
+  } else {
+    document.body.style.overflow = 'hidden'
+  };
+
   return (
     <UserContext.Provider value={{ 
       setLoginData,
@@ -43,8 +54,11 @@ function App() {
     }}>
     <CatalogueContext.Provider value={{likedModels, setLikedModels}}>
       {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/favoritos') 
-        && <CatalogueNavBar />
+        && <> <CatalogueNavBar /> <AccountButtons accountMenu={{ accountMenu, setAccountMenu }} /> </>
       }
+      {accountMenu && <AccountMenu setAccountMenu={setAccountMenu}/>}
+      <CreateModelMenu accountMenu={accountMenu}/>
+      <EditModelMenu accountMenu={accountMenu}/>
       <Routes>
         <Route path="/" element={ <CataloguePage/> }/>
         <Route path="/modelo/:id" element={ <ModelPage/> }/>

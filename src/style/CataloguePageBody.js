@@ -1,5 +1,7 @@
 import { AiFillHeart } from "react-icons/ai";
-import { FaArrowCircleLeft } from 'react-icons/fa';
+import { BiEdit } from "react-icons/bi";
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { HiPlus } from "react-icons/hi";
 import { styled } from "styled-components";
 
 export const BreedsBody = styled.div`
@@ -65,6 +67,7 @@ export const StyledBreedCard = styled.li`
       }
     }
   ul{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding-top: 10px;
     margin-top: -6px;
     background-color: #F8F8F8;
@@ -205,7 +208,7 @@ export const CataloguePageNavBar = styled.div`
     p{
       cursor: pointer;
       margin-left: 3px;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 20px;
       transition-duration: 400ms;
       &:hover{
@@ -221,7 +224,8 @@ export const CataloguePageNavBar = styled.div`
       line-height: 30px;
     }
   }
-`
+`;
+
 export const StyledHeart = styled(AiFillHeart)`
   font-size: 40px;
   display: flex;
@@ -234,12 +238,12 @@ export const StyledHeart = styled(AiFillHeart)`
   &:hover{
     color: white;
   }
-`
+`;
 
 export const AddRmLike = styled(AiFillHeart)`
   font-size: 38px;
   color: white;
-`
+`;
 
 export const StyledArrow = styled(FaArrowCircleLeft)`
   font-size: 24px;
@@ -249,4 +253,54 @@ export const StyledArrow = styled(FaArrowCircleLeft)`
   &:hover{
     color: white;
   }
-`
+`;
+
+export const StyledAccountButtons = styled.div`
+  font-family: 'Lexend Deca', sans-serif;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  z-index: 3;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: ${({ accountMenu }) => !accountMenu ? '10px' : '-90px'};
+  margin-right: 10px;
+  transition: 400ms ease-out;
+  width: 90px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  div:nth-child(1){
+    border-radius: 10px 0 0 10px;
+  }
+  div:nth-child(2){
+    border-radius: 0 10px 10px 0;
+  }
+  div{
+    cursor: pointer;
+    background: #5dbb63;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    &:hover{
+      opacity: 0.8;
+      transition-duration: 400ms;
+    }
+  }
+`;
+
+export const StyledEditIcon = styled(BiEdit)`
+  color: black;
+  font-size: 26px;
+`;
+
+export const StyledPlusIcon = styled(HiPlus)`
+  color: black;
+  font-size: 28px;
+`;
