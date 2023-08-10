@@ -291,7 +291,7 @@ export const StyledAccountButtons = styled.div`
   }
   div:nth-child(2){
     border-radius: 0 10px 10px 0;
-    cursor: ${({ myModels }) => myModels !== null ? 'pointer' : 'default'};
+    cursor: ${({ myModels, name }) => (myModels === null && name) ? 'default' : 'pointer'};
   }
   div{
     img{

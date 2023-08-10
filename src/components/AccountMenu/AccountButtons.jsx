@@ -22,9 +22,9 @@ const AccountButtons = ({ accountMenu: { accountMenu, setAccountMenu, breeds, my
   }
 
   return (
-    <StyledAccountButtons breeds={breeds} myModels={myModels} accountMenu={accountMenu}>
+    <StyledAccountButtons name={name} breeds={breeds} myModels={myModels} accountMenu={accountMenu}>
       <div onClick={() => accountFeatures('cadastrar')}>{breeds === null ? <img src={loadingGif}/> : <StyledPlusIcon />}</div>
-      <div onClick={() => accountFeatures('editar')}>{myModels === null ? <img src={loadingGif}/> : <StyledEditIcon />}</div>
+      <div onClick={() => accountFeatures('editar')}>{(myModels === null && name) ? <img src={loadingGif}/> : <StyledEditIcon />}</div>
     </StyledAccountButtons>
   )
 };
