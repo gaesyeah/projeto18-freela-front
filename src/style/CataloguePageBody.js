@@ -35,6 +35,7 @@ export const BreedsBody = styled.div`
 export const StyledBreedCard = styled.li`
   width: 90%;
   font-family: 'Lexend Deca', sans-serif;
+  border-radius: 8px 0 0 8px;
   h1{
     overflow: hidden;
     text-align: center;
@@ -48,6 +49,7 @@ export const StyledBreedCard = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 0 8px 8px 0;
     &:hover{
       opacity: ${({ loading }) => loading ? 1 : 0.9};
       transition-duration: 400ms;
@@ -64,8 +66,7 @@ export const StyledBreedCard = styled.li`
       height: 70px;
       width: 70px;
         img{
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
+          border-radius: 0 8px 8px 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -120,9 +121,11 @@ export const StyledModelCard = styled.li`
     flex-direction: column;
     height: 158px;
     width: 158px;
+    border-radius: 0 0 0 0;
     img{
       position: relative;
-;
+      border-top-right-radius: 6px;
+      border-top-left-radius: 6px;
       width: 100%;
       height: 100%;
       object-fit: cover;

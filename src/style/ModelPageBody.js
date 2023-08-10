@@ -8,6 +8,7 @@ export const ModelPageBody = styled.div`
   height: 100vh;
   background-color: #EDEDED;
   div:nth-child(1){
+    background-color: lightgray;
     margin-top: 90px;
     display: flex;
     align-items: center;
@@ -16,6 +17,7 @@ export const ModelPageBody = styled.div`
     border-radius: 8px;
     width: 340px;
     div:nth-child(1){
+      background-color: lightgray;
       position: relative;
       display: flex;
       justify-content: center;
@@ -48,12 +50,15 @@ export const ModelPageBody = styled.div`
       }
     }
     div:nth-child(2){
+      background-color: lightgray;
       border-radius: 0 0 6px 6px;
       background-color: white;
       width: 100%;
       display: flex;
       flex-direction: column;
       div{
+        background-color: lightgray;
+        border-radius: 0 0 0 0;
         height: auto;
         display: flex;
         flex-direction: row;
@@ -61,19 +66,22 @@ export const ModelPageBody = styled.div`
         font-weight: 700;
         font-size: 18px;
         h1{
-          overflow: hidden;
+          overflow-y: hidden;
+          overflow-x: auto;
           margin-bottom: 3px;
           margin-top: 3px;
         }
       }
       p{
+        background-color: lightgray;
+        border-radius: 0 0 0 0;
         overflow: hidden;
-        margin-left: 2px;
+        padding-left: 2px;
         font-weight: 500;
-        margin-bottom: 3px;
+        padding-bottom: 3px;
         overflow-wrap: break-word;
         span{
-          color: lightgray;
+          color: #EDEDED;
         }
       }
       button{
