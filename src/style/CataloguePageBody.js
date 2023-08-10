@@ -2,90 +2,94 @@ import { AiFillHeart } from "react-icons/ai";
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { styled } from "styled-components";
 
-export const CataloguePageBody = styled.div`
+export const BreedsBody = styled.div`
+  h2{
+    margin-top: 78px;
+    font-weight: 700;
+    font-size: 17px;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #EDEDED;
-  form{
-    display: flex;
-    margin-top: 70px;
-    input{
-      padding-left: 6px;
-      user-select: text;
-      background: #FFFFFF;
-      border: 1px solid #D5D5D5;
-      font-size: 17px;
-      line-height: 21px;
-      color: #666666;
-      width: 290px;
-      border-radius: 8px 0 0 8px;
-      &:disabled{
-        cursor: default;
-        opacity: 0.5;
-        background: #F2F2F2;
-      }
-      &::placeholder{
-        color: #DBDBDB;
-      }
-    }
-    button:nth-child(3){
-      border-radius: 0 8px 8px 0;
-    }
-    button{
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border: none;
-      background-color: lightgrey;
-      transition-duration: 400ms;
-      &:hover{
-        background-color: #5dbb63;
-      }
-      &:disabled{
-        cursor: default;
-        opacity: 0.5;
-        &:hover{
-          background-color: lightgrey;
-      }
-      }
-    }
-  }
-  h2{
-    margin-top: 8px;
-    font-weight: 700;
-    font-size: 17px;
-  }
   font-family: 'Lexend Deca', sans-serif;
   display: flex;
-  justify-content: center;
+  min-height: 100vh;
+  padding-bottom: 14px;
   ul{
-    @media (min-width: 352px) {
-      max-width: 352px;
-    }
-    @media (min-width: 550px) {
-      max-width: 1100px;
-    }
-    margin-bottom: 40px;
-    min-width: 352px;
+    position: relative;
+    width: 100%;
     display: flex;
-    margin-top: 8px;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 18px;
     gap: 8px;
-    flex-wrap: wrap;
   }
-`
+`;
+
+export const StyledBreedCard = styled.li`
+  width: 90%;
+  font-family: 'Lexend Deca', sans-serif;
+  h1{
+    text-align: center;
+    color: black;
+    font-weight: 500;
+  }
+  div{
+    cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
+    border-radius: 8px;
+    background-color: #5dbb63;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:hover{
+      opacity: ${({ loading }) => loading ? 1 : 0.9};
+      transition-duration: 400ms;
+    }
+    p{
+      padding-left: 10px;
+      color: black;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    div{
+      height: 70px;
+      width: 70px;
+        img{
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  ul{
+    padding-top: 10px;
+    margin-top: -6px;
+    background-color: #F8F8F8;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 0px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 7px;
+    gap: 7px;
+  }
+`;
+
 export const StyledModelCard = styled.li`
   &:hover{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
+  margin-top: -2.5px;
   background-color: #EDEDED;
   box-sizing: content-box;
   border: 2px solid lightgray;
   border-radius: 8px;
-  width: 168px;
+  width: 158px;
   div:nth-child(1) {
     cursor: pointer;
     h2{
@@ -99,12 +103,13 @@ export const StyledModelCard = styled.li`
       font-size: 26px;
       color: #FF2E2E;
       align-self: center;
-      margin-top: 60px;
+      margin-top: 56px;
+      margin-left: 12px;
     }
     display: flex;
     flex-direction: column;
-    height: 168px;
-    width: 168px;
+    height: 158px;
+    width: 158px;
     img{
       position: relative;
       border-top-right-radius: 6px;
@@ -117,18 +122,18 @@ export const StyledModelCard = styled.li`
   div:nth-child(2){
     display: flex;
     flex-direction: column;
+    background-color: lightgray;
+    border-radius: 0px;
     p{
       max-width: 168px;
       overflow: scroll hidden;
       white-space: nowrap;
       margin-left: 2px;
+      padding: 0;
       font-weight: 500;
       margin-bottom: 2px;
       font-size: 16px;
       line-height: 20px;
-      span{
-        color: lightgray;
-      }
     }
     button{
       cursor: ${({ avaliable }) => !avaliable ? 'default' : 'pointer'};
@@ -152,7 +157,8 @@ export const StyledModelCard = styled.li`
       }
     }
   }
-`
+`;
+
 export const LoadingBody = styled.div`
   display: flex;
   justify-content: center;
@@ -231,7 +237,6 @@ export const StyledHeart = styled(AiFillHeart)`
 `
 
 export const AddRmLike = styled(AiFillHeart)`
-  cursor: pointer;
   font-size: 36px;
   color: white;
 `
