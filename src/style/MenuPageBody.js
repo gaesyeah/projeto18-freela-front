@@ -157,7 +157,7 @@ export const StyledEditMenu = styled.ul`
   h1{
     margin-top: 4px;
     margin-bottom: -6px;
-    transform: translate(-3.3%,0%);
+    transform: ${({ mlength }) => mlength > 0 ? 'translate(-3%,0%)' : 'translate(0%,0%);'};
     text-align: center;
     overflow: hidden;
     font-size: 18px;
