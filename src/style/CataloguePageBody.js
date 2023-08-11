@@ -104,6 +104,7 @@ export const StyledModelCard = styled.li`
     cursor: pointer;
     h2{
       width: 220px;
+      height: 26px;
       overflow: hidden;
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: white;
