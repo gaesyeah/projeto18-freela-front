@@ -8,7 +8,7 @@ import { changeInputs } from "../../functions/changeInputs";
 import { StyledPlusIcon } from "../../style/CataloguePageBody";
 import { StyledCreateMenu } from "../../style/MenuPageBody";
 
-const CreateModelMenu = ({ accountMenu }) => {
+const CreateModelMenu = ({ accountMenu, setMyModels }) => {
 
   const { config } = useContext(UserContext);
   const { breeds } = useContext(CatalogueContext);
@@ -41,6 +41,8 @@ const CreateModelMenu = ({ accountMenu }) => {
         width: 320,
         confirmButtonColor: '#5dbb63',
       });
+      const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/mine`, JSON.parse(localStorage.getItem('config')));
+      setMyModels(myModels.data);
 
     } catch ({response: {status, statusText, data: { message }}}){
       setLoading(false);

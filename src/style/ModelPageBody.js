@@ -57,6 +57,7 @@ export const ModelPageBody = styled.div`
       display: flex;
       flex-direction: column;
       div{
+        overflow: hidden;
         background-color: lightgray;
         border-radius: 0 0 0 0;
         height: auto;
@@ -73,6 +74,7 @@ export const ModelPageBody = styled.div`
         }
       }
       p{
+        overflow: auto;
         background-color: lightgray;
         border-radius: 0 0 0 0;
         overflow: hidden;

@@ -28,6 +28,19 @@ function App() {
     }
   };
 
+  const [myModels, setMyModels] = useState(null);
+  const [breeds, setBreeds] = useState(null);
+  const fetchData = async () => {
+    try {
+      const breeds = await axios.get(`${import.meta.env.VITE_API_URL}/getBreeds`);
+      setBreeds(breeds.data);
+      
+      const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/mine`, JSON.parse(localStorage.getItem('config')));
+      setMyModels(myModels.data);
+    } catch ({response: {status, statusText, data: { message }}}) {
+      console.log(`${status} ${statusText}\n${message}`);
+    }
+  }
   useEffect(() => {
     /*redefine novamente as keys no localStorage caso o loginData já tenha sido "setado" na rota /
     para não permitir que os valores no localStorage sejam redefinidos para undefined*/
@@ -35,29 +48,15 @@ function App() {
         localStorage.setItem('config', JSON.stringify(config));
         localStorage.setItem('name', name);
     };
+
+    fetchData();
+
   }, [loginData]);
 
   const storedConfig = useRef(JSON.parse(localStorage.getItem('config')));
   const storedName = useRef(localStorage.getItem('name'));
 
   const [accountMenu, setAccountMenu] = useState(null);
-
-  const [myModels, setMyModels] = useState(null);
-  const [breeds, setBreeds] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const breeds = await axios.get(`${import.meta.env.VITE_API_URL}/getBreeds`);
-        setBreeds(breeds.data);
-        
-        const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/mine`, JSON.parse(localStorage.getItem('config')));
-        setMyModels(myModels.data);
-      } catch ({response: {status, statusText, data: { message }}}) {
-        console.log(`${status} ${statusText}\n${message}`);
-      }
-    };
-    fetchData();
-  }, [loginData]);
 
   return (
     <UserContext.Provider value={{ 
@@ -70,7 +69,7 @@ function App() {
         && <> <CatalogueNavBar /> {pathname.slice(0, 8) !== '/modelo/' && <AccountButtons accountMenu={{ accountMenu, setAccountMenu, breeds, myModels }} />} </>
       }
       {accountMenu && <AccountMenu setAccountMenu={setAccountMenu}/>}
-      <CreateModelMenu accountMenu={accountMenu}/>
+      <CreateModelMenu accountMenu={accountMenu} setMyModels={setMyModels} />
       <EditModelMenu accountMenu={{ myModels, setMyModels, accountMenu }}/>
       <Routes>
         <Route path="/" element={ <CataloguePage /> }/>
