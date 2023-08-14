@@ -18,6 +18,7 @@ export const ModelPageBody = styled.div`
     border-radius: 8px;
     width: 340px;
     div:nth-child(1){
+      overflow: hidden;
       background-color: lightgray;
       position: relative;
       display: flex;

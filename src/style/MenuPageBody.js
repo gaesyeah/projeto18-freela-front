@@ -200,10 +200,10 @@ export const StyledMyModelCard = styled.li`
     transition-duration: 400ms;
   }
   @keyframes blink {
-    25%, 75%, 100% {
-      color: red;
+    0%, 50%, 100% {
+      color: #FF5C5C;
     }
-    0%, 50% {
+    25%, 75% {
       color: green;
     }
   }
@@ -250,5 +250,4 @@ export const StyledMyModelCard = styled.li`
       object-fit: cover;
     }
   }
-
 `;

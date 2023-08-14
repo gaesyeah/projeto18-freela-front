@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
 import { favoriteAlert } from "../functions/favorites";
@@ -40,14 +41,32 @@ const ModelPage = () => {
 
   const openZap = () => {
     window.open(`https://wa.me/${userData.cellphone}?text=` + encodeURIComponent(`
-    *Olá ${userData.name}, eu gostaria de contratar o seu modelo:*
+  *Olá ${userData.name}, eu gostaria de contratar o seu modelo:*
   *-* Nome: ${title}
   *-* categoria : ${breedName}
   *-* Disponivel: ${avaliable ? 'sim' : 'não'}
 
   *Meu nome:* ${name ? name : 'anônimo'}
-    `));
+  `));
   }
+
+  const zap = () => {
+    if (!avaliable) return Swal.fire({
+      title: '<span style=";font-size: 18px">O modelo está de férias, deseja ainda sim entrar em contato com o tutor?</span>',
+      width: 320,
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+      confirmButtonColor: '#5dbb63',
+      denyButtonColor: 'lightgrey',
+      }).then((result) => {
+      if (result.isConfirmed) {
+        openZap();
+      }
+    })
+
+    openZap();
+  };
 
   return (
     <ModelPageBody liked={isLiked} avaliable={avaliable}>
@@ -69,7 +88,7 @@ const ModelPage = () => {
           </button>
         </div>
       </div>
-      <WhatsAppDiv onClick={openZap}>
+      <WhatsAppDiv onClick={zap}>
         <img src={userData.imageUrl}/>
         <p>{userData.cellphone}</p>
         <img src={zapIcon} />
