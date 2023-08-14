@@ -33,11 +33,11 @@ const BreedCard = ({ id, name, imageUrl }) => {
   return (
     <StyledBreedCard loading={loading}>
       <div onClick={getCatalogue}>
-        <p>{loading ? 'Carregando...' : name}</p>
+        <p>{loading ? 'Carregando...' : `${name}s`}</p>
         <div><img src={imageUrl}/></div>
       </div>
       {catalogue === undefined
-        ? <h1>Talvez todos os {name}s estejam de férias</h1>
+        ? <h1>Não há nenhum {name} cadastrado por outros tutores</h1>
         : (catalogue !== null) 
           &&
           <ul>

@@ -37,10 +37,13 @@ export const StyledBreedCard = styled.li`
   font-family: 'Lexend Deca', sans-serif;
   border-radius: 8px 0 0 8px;
   h1{
+    margin-top: 1px;
     overflow: hidden;
     text-align: center;
     color: black;
     font-weight: 500;
+    font-size: 12px;
+    height: 14px;
   }
   div{
     cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
