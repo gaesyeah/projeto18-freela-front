@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const ModelPageBody = styled.div`
+  font-family: 'Lexend Deca', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,6 +130,7 @@ export const ModelPageBody = styled.div`
 `;
 
 export const WhatsAppDiv = styled.div`
+  font-family: 'Lexend Deca', sans-serif;
   margin-top: 14px;
   overflow: hidden;
   background-color: #5dbb63;

@@ -91,6 +91,7 @@ export const StyledBreedCard = styled.li`
 `;
 
 export const StyledModelCard = styled.li`
+  font-family: 'Lexend Deca', sans-serif;
   &:hover{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
@@ -174,6 +175,7 @@ export const StyledModelCard = styled.li`
 `;
 
 export const LoadingBody = styled.div`
+  font-family: 'Lexend Deca', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

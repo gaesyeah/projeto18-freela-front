@@ -135,6 +135,7 @@ export const StyledCreateMenu = styled.form`
 `;
 
 export const StyledEditMenu = styled.ul`
+  font-family: 'Lexend Deca', sans-serif;
   transition: 400ms ease-out;
   top: 50%; right: ${({ accountMenu }) => accountMenu === 'editar' ? '50%' : '-50%'};
   transform: translate(50%,-50%);
@@ -167,6 +168,7 @@ export const StyledEditMenu = styled.ul`
 `;
 
 export const StyledMyModelsCard = styled.ul`
+  font-family: 'Lexend Deca', sans-serif;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-left: 6px;
   margin-top: 20px;
@@ -191,6 +193,7 @@ export const StyledMyModelsCard = styled.ul`
 `;
 
 export const StyledMyModelCard = styled.li`
+  font-family: 'Lexend Deca', sans-serif;
   cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
   &:hover{
     opacity: 0.8;
