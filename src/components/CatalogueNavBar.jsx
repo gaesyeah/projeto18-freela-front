@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
+import { favoriteAlert } from "../functions/favorites";
 import { CataloguePageNavBar, StyledArrow, StyledHeart } from "../style/CataloguePageBody";
 
 const CatalogueNavBar = () => {
@@ -26,7 +27,7 @@ const CatalogueNavBar = () => {
         confirmButtonColor: '#5dbb63',
       });
     }
-  }
+  };
 
   const signOut = () => {
     Swal.fire({
@@ -61,7 +62,7 @@ const CatalogueNavBar = () => {
       }
     </div>
     <h1>{likedModels.length}</h1>
-    <StyledHeart onClick={() => navigate('/favoritos')}/>
+    <StyledHeart onClick={favoriteAlert}/>
   </CataloguePageNavBar>
   );
 };

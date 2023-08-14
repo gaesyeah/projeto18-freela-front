@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
+import { favoriteAlert } from "../functions/favorites";
 import { AddRmLike, StyledModelCard } from "../style/CataloguePageBody";
 
 const ModelCard = ({ model }) => {
@@ -23,7 +24,7 @@ const ModelCard = ({ model }) => {
       </div>
       <div>
         <p>{title}</p>
-        <button 
+        <button onClick={() => favoriteAlert(avaliable)}
           disabled={loading}
         ><h3>Adicionar aos Favoritos</h3>
           <AddRmLike />

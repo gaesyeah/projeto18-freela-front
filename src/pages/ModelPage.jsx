@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
+import { favoriteAlert } from "../functions/favorites";
 import { AddRmLike, LoadingBody } from "../style/CataloguePageBody";
 import { ModelPageBody, WhatsAppDiv } from "../style/ModelPageBody";
 import zapIcon from "./../assets/zapIcon.png";
@@ -61,7 +62,7 @@ const ModelPage = () => {
           </div>
           <p>{description}</p>
           <p><span>categoria: {breedName}</span></p>
-          <button 
+          <button onClick={() => favoriteAlert(avaliable)}
             disabled={loading}
           >{loading ? <h3>Carregando...</h3> : (isLiked) ? <h3>Remover dos favoritos</h3> : <h3>Adicionar aos Favoritos</h3>}
             <AddRmLike />
