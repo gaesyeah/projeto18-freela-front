@@ -12,7 +12,7 @@ const CreateModelMenu = ({ accountMenu }) => {
 
   const { config } = useContext(UserContext);
   const { breeds } = useContext(CatalogueContext);
-  if (breeds === null) return;
+  if (breeds === null || breeds.length === 0) return;
 
   const [loading, setLoading] = useState(false);
   const [modelInputs, setModelInputs] = useState({
