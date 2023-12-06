@@ -32,7 +32,7 @@ function App() {
   const [breeds, setBreeds] = useState(null);
   const fetchData = async () => {
     try {
-      const breeds = await axios.get(`${import.meta.env.VITE_API_URL}/breeds`);
+      const breeds = await axios.get(`${import.meta.env.VITE_API_URL}/breed`);
       setBreeds(breeds.data);
       
       const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/mine`, JSON.parse(localStorage.getItem('config')));
