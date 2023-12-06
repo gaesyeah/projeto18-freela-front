@@ -32,10 +32,10 @@ function App() {
   const [breeds, setBreeds] = useState(null);
   const fetchData = async () => {
     try {
-      const breeds = await axios.get(`${import.meta.env.VITE_API_URL}/getBreeds`);
+      const breeds = await axios.get(`${import.meta.env.VITE_API_URL}/breeds`);
       setBreeds(breeds.data);
       
-      const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/mine`, JSON.parse(localStorage.getItem('config')));
+      const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/mine`, JSON.parse(localStorage.getItem('config')));
       setMyModels(myModels.data);
     } catch ({response: {status, statusText, data: { message }}}) {
       console.log(`${status} ${statusText}\n${message}`);
