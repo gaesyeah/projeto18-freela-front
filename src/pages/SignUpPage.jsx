@@ -26,7 +26,7 @@ const SignUpPage = () => {
     }
     try {
       setLoading(true);
-      await axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, signUpInputs);
+      await axios.post(`${import.meta.env.VITE_API_URL}/user/sign-up`, signUpInputs);
       Swal.fire({
         title: `<span style=";font-size: 18px">Conta cadastrada com sucesso!</span>`,
         width: 320,

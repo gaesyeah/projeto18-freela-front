@@ -21,7 +21,7 @@ const signInPage = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/sign-in`, signInInputs);
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/sign-in`, signInInputs);
       setLoginData(data);
       navigate('/');
     } catch ({response: {status, statusText, data: { message }}}){

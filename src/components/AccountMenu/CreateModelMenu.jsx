@@ -33,7 +33,7 @@ const CreateModelMenu = ({ accountMenu, setMyModels }) => {
   const postInputs = async () => {
     setLoading(true);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/postCatalogue`, modelInputs, config);
+      await axios.post(`${import.meta.env.VITE_API_URL}/catalogue`, modelInputs, config);
       setLoading(false);
       setModelInputs({title: "", description: "", breedId: breeds[0].id, avaliable: true, photos: []});
       Swal.fire({
@@ -41,7 +41,7 @@ const CreateModelMenu = ({ accountMenu, setMyModels }) => {
         width: 320,
         confirmButtonColor: '#5dbb63',
       });
-      const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/mine`, JSON.parse(localStorage.getItem('config')));
+      const myModels = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/mine`, JSON.parse(localStorage.getItem('config')));
       setMyModels(myModels.data);
 
     } catch ({response: {status, statusText, data: { message }}}){

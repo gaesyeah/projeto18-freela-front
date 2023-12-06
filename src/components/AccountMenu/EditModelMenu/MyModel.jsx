@@ -13,8 +13,8 @@ export const MyModelCard = ({ model: { id, title, imageUrl, avaliable }, setMyMo
   const confirmChangeVacation = async () => {
     setLoading(true);
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/putCatalogueOnVacation/${id}`, [], config);
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/mine`, config);
+      await axios.patch(`${import.meta.env.VITE_API_URL}/catalogue/vacation/${id}`, [], config);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/mine`, config);
       setMyModels(data);
       setLoading(false);
     } catch ({response: {status, statusText, data: { message }}}){

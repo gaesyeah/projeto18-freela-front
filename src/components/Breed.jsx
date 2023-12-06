@@ -20,7 +20,7 @@ const BreedCard = ({ id, name, imageUrl }) => {
     if (loading) return;
     setLoading(true);
     try {      
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/all/${id}${tokenString}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/breed/${id}${tokenString}`);
       setCatalogue(data);
       setLoading(false);
     } catch ({response: {status, statusText, data: { message }}}){

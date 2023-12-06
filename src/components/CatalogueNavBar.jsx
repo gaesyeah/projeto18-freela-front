@@ -16,7 +16,7 @@ const CatalogueNavBar = () => {
 
   const confirmSignOut = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/sign-out`,[], config);
+      await axios.post(`${import.meta.env.VITE_API_URL}/user/sign-out`,[], config);
       localStorage.removeItem('config');
       localStorage.removeItem('name');
       window.location.reload();

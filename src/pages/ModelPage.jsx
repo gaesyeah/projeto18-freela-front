@@ -25,7 +25,7 @@ const ModelPage = () => {
   useEffect(() => {
     const fetchModelData = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/getCatalogue/unique/${id}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/unique/${id}`);
         setModel(data);
       } catch ({response: {status, statusText, data: { message }}}){
         console.log(`${status} ${statusText}\n${message}`);
