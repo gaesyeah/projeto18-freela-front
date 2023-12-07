@@ -143,7 +143,7 @@ export const StyledModelCard = styled.li`
     border-radius: 0px;
     p{
       height: unset;
-      max-width: 168px;
+      width: 100%;
       overflow: scroll hidden;
       white-space: nowrap;
       margin-left: 2px;
@@ -152,6 +152,7 @@ export const StyledModelCard = styled.li`
       margin-bottom: 2px;
       font-size: 16px;
       line-height: 20px;
+      align-self: flex-start;
     }
     button{
       cursor: ${({ avaliable }) => !avaliable ? 'default' : 'pointer'};
