@@ -21,6 +21,7 @@ const ModelPage = () => {
   const [loading, setLoading] = useState(false);
 
   const [model, setModel] = useState(null);
+  const [photoChanged, setPhotoChanged] = useState(false);
 
   const [selectedPhoto, setSelectedPhoto] = useState(false);
   useEffect(() => {
@@ -71,35 +72,45 @@ const ModelPage = () => {
   };
 
   const changePhoto = (type) => {
-    setSelectedPhoto(({ i }) => {
-      return { 
-        url: (type === 'sum' ? (photos[i + 1]) : (photos[i - 1])).url,
-        i: (type === 'sum' ? (i + 1) : (i - 1))
-      }
-    });
+    if (type === 'sum'){
+      setPhotoChanged('right');
+    } else {
+      setPhotoChanged('left');
+    }
+    setTimeout(() => {
+      setPhotoChanged(false);
+      setSelectedPhoto(({ i }) => {
+        return { 
+          url: (type === 'sum' ? (photos[i + 1]) : (photos[i - 1])).url,
+          i: (type === 'sum' ? (i + 1) : (i - 1))
+        }
+      });
+    }, 150);
   };
 
   return (
-    <ModelPageBody liked={isLiked} avaliable={avaliable}>
+    <ModelPageBody liked={isLiked} avaliable={avaliable} photoChanged={photoChanged}>
       <div>
         <div>
-          {selectedPhoto.i > 0 && 
-            <ChangeImg
-              position={'left'} 
-              onClick={() => changePhoto('sub')}
-            >
-              <span>{`<`}</span>
-            </ChangeImg>
+          {photoChanged === false && 
+            selectedPhoto.i > 0 && 
+              <ChangeImg
+                position={'left'} 
+                onClick={() => changePhoto('sub')}
+              >
+                <span>{`<`}</span>
+              </ChangeImg>
           }
           {!avaliable && <h3>Estou de Férias</h3>}
           <img src={selectedPhoto.url}/>
-          {selectedPhoto.i + 1 < photos.length &&
-            <ChangeImg 
-              position={'right'}
-              onClick={() => changePhoto('sum')}
-            >
-              <span>{`>`}</span>
-            </ChangeImg>
+          {photoChanged === false && 
+            selectedPhoto.i + 1 < photos.length &&
+              <ChangeImg 
+                position={'right'}
+                onClick={() => changePhoto('sum')}
+              >
+                <span>{`>`}</span>
+              </ChangeImg>
           }
         </div>
         <div>
@@ -126,5 +137,3 @@ const ModelPage = () => {
 };
 
 export default ModelPage;
-
-

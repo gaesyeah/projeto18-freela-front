@@ -44,6 +44,9 @@ export const ModelPageBody = styled.div`
         margin-left: 10px;
       }
       img{
+        transition: 150ms;
+        margin-right: ${({ photoChanged }) => photoChanged && (photoChanged === 'right' ? '680px' : 'unset')};
+        margin-left: ${({ photoChanged }) => photoChanged && (photoChanged === 'left' ? '680px' : 'unset')};
         border-radius: 6px 6px 0 0;
         object-fit: cover;
         width: 100%;
