@@ -130,6 +130,31 @@ export const ModelPageBody = styled.div`
   }
 `;
 
+export const ChangeImg = styled.li`
+  cursor: pointer;
+  left: ${({ position }) => position === 'left' ? 0 : 'unset'};
+  right: ${({ position }) => position === 'right' ? 0 : 'unset'};
+  margin-left: ${({ position }) => position === 'left' ? '2px' : 'unset'};
+  margin-right: ${({ position }) => position === 'right' ? '2px' : 'unset'};
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: lightgray;
+  opacity: 0.8;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover{
+    opacity: 0.6;
+  }
+  span{
+    color: black;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+`;
+
 export const WhatsAppDiv = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   margin-top: 14px;

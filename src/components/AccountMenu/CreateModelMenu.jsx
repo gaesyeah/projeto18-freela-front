@@ -6,7 +6,7 @@ import { CatalogueContext } from "../../contexts/catalogueContext";
 import { UserContext } from "../../contexts/userContext";
 import { changeInputs } from "../../functions/changeInputs";
 import { StyledPlusIcon } from "../../style/CataloguePageBody";
-import { StyledCreateMenu } from "../../style/MenuPageBody";
+import { StyledCreateMenu, SubmitButton, UrlButton, UrlInput } from "../../style/MenuPageBody";
 
 const CreateModelMenu = ({ accountMenu, setMyModels }) => {
 
@@ -16,7 +16,7 @@ const CreateModelMenu = ({ accountMenu, setMyModels }) => {
 
   const [loading, setLoading] = useState(false);
   const [modelInputs, setModelInputs] = useState({
-    title: "", description: "", breedId: breeds[0].id, avaliable: true, photos: []
+    title: "", description: "", breedId: breeds[0].id, avaliable: true, photos: [], mainPhotoPositionFromPhotosArray: 0
   });
   const submitModel = (e) => {
     e.preventDefault();
@@ -86,13 +86,24 @@ const CreateModelMenu = ({ accountMenu, setMyModels }) => {
       <textarea onChange={e => changeInputs(setModelInputs, e.target.value, 'description')} 
         type="text" placeholder="descição" value={modelInputs.description} disabled={loading} required>
       </textarea>
-      <input onChange={e => setPhotosInput(e.target.value)} 
-        type="text" placeholder="url para fotos do modelo" disabled={loading} value={photosInput}>
-      </input>
-      <button onClick={changePhotosArray} type="button" disabled={loading}>
-        <StyledPlusIcon></StyledPlusIcon>
-      </button>
-      <button disabled={loading}>{loading ? 'Carregando...' : 'Criar Modelo'}</button>
+      <div>      
+        <UrlInput onChange={e => setPhotosInput(e.target.value)} 
+          type="text" placeholder="url para fotos do modelo" disabled={loading} value={photosInput}>
+        </UrlInput>
+        <UrlButton onClick={changePhotosArray} type="button" disabled={loading}>
+          <StyledPlusIcon></StyledPlusIcon>
+        </UrlButton>
+      </div>
+      {modelInputs.photos.length > 0 && 
+        <>
+          <label htmlFor="principal-photo">Escolha a foto principal:</label>
+          <select onChange={e => changeInputs(setModelInputs, Number(e.target.value), 'mainPhotoPositionFromPhotosArray')} 
+            name="principal-photo" id="principal-photo" form="categoryForm" disabled={loading} value={modelInputs.mainPhotoPositionFromPhotosArray} required>
+              {modelInputs.photos.map(({ url }, i) => <option value={i} key={i}>{url}</option>)}
+          </select>
+        </>
+      }
+      <SubmitButton disabled={loading}>{loading ? 'Carregando...' : 'Criar Modelo'}</SubmitButton>
     </StyledCreateMenu>
   )
 };

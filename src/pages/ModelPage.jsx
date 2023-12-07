@@ -6,7 +6,7 @@ import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
 import { favoriteAlert } from "../functions/favorites";
 import { AddRmLike, LoadingBody } from "../style/CataloguePageBody";
-import { ModelPageBody, WhatsAppDiv } from "../style/ModelPageBody";
+import { ChangeImg, ModelPageBody, WhatsAppDiv } from "../style/ModelPageBody";
 import zapIcon from "./../assets/zapIcon.png";
 
 const ModelPage = () => {
@@ -22,11 +22,13 @@ const ModelPage = () => {
 
   const [model, setModel] = useState(null);
 
+  const [selectedPhoto, setSelectedPhoto] = useState(false);
   useEffect(() => {
     const fetchModelData = async () => {
       try {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/catalogue/unique/${id}`);
         setModel(data);
+        setSelectedPhoto(data.photos.map((photos, i) => ({ ...photos, i })).find(({ id }) => id === data.mainPhotoId));
       } catch ({response: {status, statusText, data: { message }}}){
         console.log(`${status} ${statusText}\n${message}`);
       }
@@ -36,7 +38,7 @@ const ModelPage = () => {
 
   if (model === null) return <LoadingBody><p>Carregando...</p></LoadingBody>;
   
-  const { title, description, avaliable, breedName, imageUrl, userData } = model;
+  const { title, description, avaliable, breedName, photos, userData } = model;
   const isLiked = likedModels.some(model => model.id === id);
 
   const openZap = () => {
@@ -68,12 +70,37 @@ const ModelPage = () => {
     openZap();
   };
 
+  const changePhoto = (type) => {
+    setSelectedPhoto(({ i }) => {
+      return { 
+        url: (type === 'sum' ? (photos[i + 1]) : (photos[i - 1])).url,
+        i: (type === 'sum' ? (i + 1) : (i - 1))
+      }
+    });
+  };
+
   return (
     <ModelPageBody liked={isLiked} avaliable={avaliable}>
       <div>
         <div>
+          {selectedPhoto.i > 0 && 
+              <ChangeImg
+              position={'left'} 
+              onClick={() => changePhoto('sub')}
+            >
+              <span>{`<`}</span>
+            </ChangeImg>
+          }
           {!avaliable && <h3>Estou de Férias</h3>}
-          <img src={imageUrl}/>
+          <img src={selectedPhoto.url}/>
+          {selectedPhoto.i + 1 < photos.length &&
+            <ChangeImg 
+              position={'right'}
+              onClick={() => changePhoto('sum')}
+            >
+              <span>{`>`}</span>
+            </ChangeImg>
+          }
         </div>
         <div>
           <div>

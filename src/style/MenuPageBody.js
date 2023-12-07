@@ -10,6 +10,12 @@ export const StyledBackGround = styled.div`
 `;
 
 export const StyledCreateMenu = styled.form`
+  div{
+    position: relative;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  }
   font-family: 'Lexend Deca', sans-serif;
   background-color: #EDEDED;
   transition: 400ms ease-out;
@@ -92,47 +98,58 @@ export const StyledCreateMenu = styled.form`
       color: #DBDBDB;
     }
   }
-  button:nth-child(6){
-    width: 38px;
-    height: 38px;
-    background: #5dbb63;
-    position: absolute;
-    border-radius: 0 5px 5px 0;
-    right: 16px;
-    margin-top: 184px;
-      &:disabled{
+`;
+
+export const SubmitButton = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  background: #5dbb63;
+  width: 90%;
+  height: 38px;
+  margin-bottom: 12px;
+  font-size: 21px;
+  line-height: 26px;
+  color: #FFFFFF;
+  &:disabled{
       cursor: default;
       opacity: 0.5;
-    }
-    &:hover{
+  }
+  &:hover{
       opacity: 0.9;
       transition-duration: 200ms;
-    }
   }
-  button{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: none;
-    background: #5dbb63;
-    width: 90%;
-    height: 38px;
-    margin-bottom: 12px;
-    font-size: 21px;
-    line-height: 26px;
-    color: #FFFFFF;
-    &:disabled{
-        cursor: default;
-        opacity: 0.5;
-    }
-    &:hover{
-        opacity: 0.9;
-        transition-duration: 200ms;
-    }
+`
+
+export const UrlInput = styled.input`
+  min-width: 100%;
+`
+
+export const UrlButton = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 38px;
+  height: 38px;
+  background: #5dbb63;
+  position: absolute;
+  border-radius: 0 5px 5px 0;
+  top: 0;
+  right: 0;
+  &:disabled{
+    cursor: default;
+    opacity: 0.5;
   }
-`;
+  &:hover{
+    opacity: 0.9;
+    transition-duration: 200ms;
+  }
+`
 
 export const StyledEditMenu = styled.ul`
   font-family: 'Lexend Deca', sans-serif;
