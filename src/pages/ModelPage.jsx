@@ -84,7 +84,7 @@ const ModelPage = () => {
       <div>
         <div>
           {selectedPhoto.i > 0 && 
-              <ChangeImg
+            <ChangeImg
               position={'left'} 
               onClick={() => changePhoto('sub')}
             >

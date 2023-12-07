@@ -132,6 +132,7 @@ export const ModelPageBody = styled.div`
 
 export const ChangeImg = styled.li`
   cursor: pointer;
+  overflow: hidden;
   left: ${({ position }) => position === 'left' ? 0 : 'unset'};
   right: ${({ position }) => position === 'right' ? 0 : 'unset'};
   margin-left: ${({ position }) => position === 'left' ? '2px' : 'unset'};
@@ -149,6 +150,7 @@ export const ChangeImg = styled.li`
     opacity: 0.6;
   }
   span{
+    overflow: hidden;
     color: black;
     font-size: 30px;
     margin-bottom: 10px;
