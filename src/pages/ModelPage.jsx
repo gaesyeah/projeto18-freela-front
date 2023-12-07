@@ -6,7 +6,7 @@ import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
 import { favoriteAlert } from "../functions/favorites";
 import { AddRmLike, LoadingBody } from "../style/CataloguePageBody";
-import { Body, ChangeImg, InteractContainer, ModelPageBody, PhotoContainer, WhatsAppDiv } from "../style/ModelPageBody";
+import { ChangeImg, InteractContainer, ModelContent, ModelPageBody, PhotoContainer, WhatsAppDiv } from "../style/ModelPageBody";
 import zapIcon from "./../assets/zapIcon.png";
 
 const ModelPage = () => {
@@ -90,7 +90,7 @@ const ModelPage = () => {
 
   return (
     <ModelPageBody>
-      <Body>
+      <ModelContent>
         <PhotoContainer photoChanged={photoChanged}>
           {!photoChanged && 
             selectedPhoto.i > 0 && 
@@ -125,7 +125,7 @@ const ModelPage = () => {
             <AddRmLike />
           </button>
         </InteractContainer>
-      </Body>
+      </ModelContent>
       <WhatsAppDiv onClick={zap}>
         <div>
           <img src={userData.imageUrl}/>

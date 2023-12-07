@@ -22,7 +22,7 @@ export const ModelPageBody = styled.div`
     }
   }
 `;
-export const Body = styled.div`
+export const ModelContent = styled.div`
   background-color: lightgray;
   margin-top: 90px;
   display: flex;
@@ -55,6 +55,9 @@ export const InteractContainer = styled.div`
       overflow-x: auto;
       margin-bottom: 3px;
       margin-top: 3px;
+      margin-left: 2px;
+      line-height: 27px;
+      margin-top: -2px;
     }
   }
   p{
