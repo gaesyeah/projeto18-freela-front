@@ -11,6 +11,7 @@ export const StyledBackGround = styled.div`
 
 export const StyledCreateMenu = styled.form`
   div{
+    border-radius: 5px;
     position: relative;
     width: 90%;
     display: flex;
@@ -227,7 +228,7 @@ export const StyledMyModelCard = styled.li`
   position: relative;
   border-radius: 8px;
   width: 100%;
-  height: 34px;
+  height: 44px;
   background: #5dbb63;
   display: flex;
   align-items: center;
@@ -256,8 +257,8 @@ export const StyledMyModelCard = styled.li`
     overflow-y: hidden;
     position: absolute;
     right: 0;
-    height: 34px;
-    width: 34px;
+    height: 44px;
+    width: 48px;
     img{
       overflow-y: hidden;
       right: 0;

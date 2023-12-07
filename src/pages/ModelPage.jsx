@@ -6,7 +6,7 @@ import { CatalogueContext } from "../contexts/catalogueContext";
 import { UserContext } from "../contexts/userContext";
 import { favoriteAlert } from "../functions/favorites";
 import { AddRmLike, LoadingBody } from "../style/CataloguePageBody";
-import { ChangeImg, ModelPageBody, WhatsAppDiv } from "../style/ModelPageBody";
+import { Body, ChangeImg, InteractContainer, ModelPageBody, PhotoContainer, WhatsAppDiv } from "../style/ModelPageBody";
 import zapIcon from "./../assets/zapIcon.png";
 
 const ModelPage = () => {
@@ -85,14 +85,14 @@ const ModelPage = () => {
           i: (type === 'sum' ? (i + 1) : (i - 1))
         }
       });
-    }, 150);
+    }, 200);
   };
 
   return (
-    <ModelPageBody liked={isLiked} avaliable={avaliable} photoChanged={photoChanged}>
-      <div>
-        <div>
-          {photoChanged === false && 
+    <ModelPageBody>
+      <Body>
+        <PhotoContainer photoChanged={photoChanged}>
+          {!photoChanged && 
             selectedPhoto.i > 0 && 
               <ChangeImg
                 position={'left'} 
@@ -103,7 +103,7 @@ const ModelPage = () => {
           }
           {!avaliable && <h3>Estou de Férias</h3>}
           <img src={selectedPhoto.url}/>
-          {photoChanged === false && 
+          {!photoChanged && 
             selectedPhoto.i + 1 < photos.length &&
               <ChangeImg 
                 position={'right'}
@@ -112,8 +112,8 @@ const ModelPage = () => {
                 <span>{`>`}</span>
               </ChangeImg>
           }
-        </div>
-        <div>
+        </PhotoContainer>
+        <InteractContainer avaliable={avaliable} liked={isLiked}>
           <div>
             <h1>{title}</h1>
           </div>
@@ -124,10 +124,12 @@ const ModelPage = () => {
           >{loading ? <h3>Carregando...</h3> : (isLiked) ? <h3>Remover dos favoritos</h3> : <h3>Adicionar aos Favoritos</h3>}
             <AddRmLike />
           </button>
-        </div>
-      </div>
+        </InteractContainer>
+      </Body>
       <WhatsAppDiv onClick={zap}>
-        <img src={userData.imageUrl}/>
+        <div>
+          <img src={userData.imageUrl}/>
+        </div>
         <p>{userData.cellphone}</p>
         <img src={zapIcon} />
       </WhatsAppDiv>
